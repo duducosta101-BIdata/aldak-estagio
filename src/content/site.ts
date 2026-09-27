@@ -1,7 +1,20 @@
 // Todo o copy do site vem de docs/spec.md, verbatim. Não alterar texto aqui sem alterar o spec.
 
-// TODO: URL de inscrição ainda não definida.
-export const INSCRICAO_URL = "#";
+// URLs de inscrição (Inhire). Uma vaga por nível; todos os botões "Inscreva-se" usam esta lista.
+export const INSCRICOES = [
+  {
+    id: "superior",
+    label: "Inscreva-se · Nível Superior",
+    url: "https://aldaktecnologia.inhire.app/vagas/743ae7da-4637-4b3a-b9cf-cb32f2159895/programa-de-estagio-2027-or-estagio-superior",
+  },
+  {
+    id: "tecnico",
+    label: "Inscreva-se · Nível Técnico",
+    url: "https://aldaktecnologia.inhire.app/vagas/70cb48eb-aef6-4404-9167-bd4c649311b7/programa-de-estagio-aldak-2027-or-nivel-tecnico",
+  },
+] as const;
+
+export type Inscricao = (typeof INSCRICOES)[number];
 
 export type IconName =
   | "Rocket"
@@ -56,7 +69,6 @@ export const site = {
       { label: "Benefícios", href: "#beneficios" },
       { label: "Depoimentos", href: "#depoimentos" },
     ] satisfies NavLink[],
-    cta: "Inscreva-se",
     menuOpenLabel: "Abrir menu",
     menuCloseLabel: "Fechar menu",
   },
@@ -64,7 +76,6 @@ export const site = {
   hero: {
     image: "/hero/banner-1366x370.jpg",
     alt: "Programa de Estágio Aldak 2027 — Inscrições até 25/10 — Oportunidades em Salvador e São Paulo",
-    cta: "Inscreva-se",
   },
 
   proposito: {
@@ -257,7 +268,6 @@ export const site = {
 
   ctaFinal: {
     h2: "Inscrições até 25/10",
-    cta: "Inscreva-se",
   },
 
   footer: {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
-import CTAButton from "@/components/CTAButton";
+import CTAGroup from "@/components/CTAGroup";
 import { site } from "@/content/site";
 
 export default function Navbar() {
@@ -12,25 +12,25 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-light bg-white">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-20 md:px-6">
-        <a href="#hero" aria-label={footer.aldakLogoAlt} className="flex items-center">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 md:h-20 md:px-6">
+        <a href="#hero" aria-label={footer.aldakLogoAlt} className="flex shrink-0 items-center">
           <Logo variant="aldak-blue" alt={footer.aldakLogoAlt} className="h-7 md:h-8" />
         </a>
 
-        <nav aria-label="Seções" className="hidden items-center gap-6 lg:flex">
+        <nav aria-label="Seções" className="hidden items-center gap-4 xl:flex">
           {nav.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-navy transition-colors hover:text-blue-royal"
+              className="text-sm font-medium whitespace-nowrap text-navy transition-colors hover:text-blue-royal"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <CTAButton>{nav.cta}</CTAButton>
+        <div className="hidden xl:block">
+          <CTAGroup size="sm" className="sm:gap-2" buttonClassName="px-3" />
         </div>
 
         <button
@@ -39,7 +39,7 @@ export default function Navbar() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? nav.menuCloseLabel : nav.menuOpenLabel}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-blue-dark hover:bg-gray-bg lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-blue-dark hover:bg-gray-bg xl:hidden"
         >
           {open ? <X strokeWidth={2} /> : <Menu strokeWidth={2} />}
         </button>
@@ -49,7 +49,7 @@ export default function Navbar() {
         <nav
           id="mobile-menu"
           aria-label="Seções"
-          className="border-t border-gray-light bg-white lg:hidden"
+          className="border-t border-gray-light bg-white xl:hidden"
         >
           <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
             {nav.links.map((link) => (
@@ -64,9 +64,7 @@ export default function Navbar() {
               </li>
             ))}
             <li className="pt-3">
-              <CTAButton className="w-full" onClick={() => setOpen(false)}>
-                {nav.cta}
-              </CTAButton>
+              <CTAGroup direction="column" onClick={() => setOpen(false)} />
             </li>
           </ul>
         </nav>

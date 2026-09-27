@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CTAButton from "@/components/CTAButton";
+import CTAGroup from "@/components/CTAGroup";
 import { site } from "@/content/site";
 
 export default function Hero() {
@@ -16,9 +16,7 @@ export default function Hero() {
           sizes="(min-width: 1152px) 1104px, 100vw"
           className="h-auto w-full rounded-2xl"
         />
-        <div className="mt-8 flex justify-center md:mt-10">
-          <CTAButton size="lg">{hero.cta}</CTAButton>
-        </div>
+        <CTAGroup size="lg" className="mt-8 md:mt-10" />
       </div>
     </section>
   );
