@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand tokens — ver CLAUDE.md */
+  --navy: #20265b;
+  --blue-dark: #273d92;
+  --blue-royal: #3951cd;
+  --blue-texture: #1b32ae;
+  --orange: #f26c3f;
+  --amber: #ffbb55;
+  --gray-light: #d9d9d9;
+  --gray-bg: #f3f3f3;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-blue-dark: var(--blue-dark);
+  --color-blue-royal: var(--blue-royal);
+  --color-blue-texture: var(--blue-texture);
+  --color-orange: var(--orange);
+  --color-amber: var(--amber);
+  --color-gray-light: var(--gray-light);
+  --color-gray-bg: var(--gray-bg);
+  /* Shade funcional: laranja ~10% mais escuro para hover do CTA */
+  --color-orange-hover: #da6139;
+
+  --font-sans: var(--font-zalando), Arial, sans-serif;
+  --font-expanded: var(--font-zalando-expanded), Arial, sans-serif;
+  --font-semi: var(--font-zalando-semi), Arial, sans-serif;
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Títulos h1/h2: Zalando Sans Expanded bold. Subtítulos h3: SemiExpanded semibold. */
+h1,
+h2 {
+  font-family: var(--font-expanded);
+  font-weight: 700;
+}
+
+h3 {
+  font-family: var(--font-semi);
+  font-weight: 600;
+}
+
+/* Seções azuis: textura de papel amassado sobre a cor média da textura. */
+.bg-blue-paper {
+  background-color: var(--blue-texture);
+  background-image: url("/textures/blue-paper.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+}
+
+/* Seções claras: textura de papel branco/cinza-claro.
+   TODO: arquivo oficial da textura clara não entregue. Quando chegar, salvar em
+   public/textures/light-paper.jpg e usar como background-image aqui.
+   Enquanto isso, fundo liso var(--gray-bg). Não gerar textura via CSS/noise. */
+.bg-light-paper {
+  background-color: var(--gray-bg);
+}
+
+/* Logo ALDAK azul: máscara sobre o PNG branco oficial (não recriar o logo). */
+.logo-mask {
+  display: inline-block;
+  background-color: var(--blue-dark);
+  -webkit-mask-image: url("/brand/aldak-horizontal-white.png");
+  mask-image: url("/brand/aldak-horizontal-white.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
