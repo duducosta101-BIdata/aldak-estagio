@@ -18,7 +18,7 @@ One-page estática de recrutamento para o Programa de Estágio ALDAK 2027. Deplo
 2. **Cores: somente a paleta abaixo** + tints/shades funcionais (hover, sombras). Nenhuma outra cor. O roxo que aparece na seção "etapas" do print `docs/reference/inhire-page-3.png` é um default do Inhire e **não** deve ser reproduzido — ver seção 8 abaixo.
 3. **Fonte: somente a família Zalando Sans.** Fallback: `Arial, sans-serif`.
 4. **Tokens `{{ }}` não substituídos:** renderizar "—" e deixar `// TODO` no código.
-5. **URL de inscrição centralizada** na constante `INSCRICAO_URL` em `src/content/site.ts`. Todos os botões "Inscreva-se" usam essa constante e abrem em nova aba (`target="_blank" rel="noopener"`).
+5. **URLs de inscrição centralizadas** na lista `INSCRICOES` em `src/content/site.ts` (uma entrada por vaga: `id`, `label`, `url`). Hoje são duas vagas no Inhire: **Nível Superior** e **Nível Técnico**. Todo ponto de CTA renderiza `<CTAGroup />` (`src/components/CTAGroup.tsx`), que gera um botão por vaga; nunca criar botão "Inscreva-se" avulso. Todos abrem em nova aba (`target="_blank" rel="noopener"`). Os rótulos dos botões ("Inscreva-se · Nível Superior" / "Inscreva-se · Nível Técnico") vivem em `INSCRICOES`, não no spec.
 6. **Assets oficiais são usados como estão.** Não recriar logos, banner ou fotos de depoimentos em SVG/CSS. Os arquivos em `public/` são a fonte de verdade visual.
 
 ## Brand tokens
@@ -53,7 +53,7 @@ Carregar via `next/font/google` (`Zalando_Sans`, `Zalando_Sans_Expanded`, `Zalan
 
 ### Componentes recorrentes
 
-- **Botão CTA:** fundo `--orange`, texto branco, `rounded-full`, padding generoso, hover = orange 10% mais escuro. Exceção: sobre fundo laranja (CTA final) o botão é branco com texto `--orange`.
+- **Botão CTA:** fundo `--orange`, texto branco, `rounded-full`, padding generoso, hover = orange 10% mais escuro (`--color-orange-hover`). Exceção: sobre fundo laranja (CTA final) o botão é branco com texto `--orange`. Os botões sempre vêm em par via `<CTAGroup />`: empilhados no mobile, lado a lado a partir de `sm`.
 - **Card claro:** fundo branco, borda 1px `--blue-dark`, `rounded-2xl`, título em `--blue-dark` (h3), texto em preto/cinza-escuro.
 - **Card laranja:** fundo `--orange`, texto branco, `rounded-2xl`, sem borda.
 - **Chip:** fundo branco, texto `--navy`, `rounded-full`, borda 1px branca (sobre azul) — ver `slide-35-anos.png`.
@@ -94,8 +94,8 @@ Componente `<Logo variant="aldak-white" | "aldak-blue" | "programa-white" | "pro
 
 Cada seção é um componente em `src/components/sections/`, consome `src/content/site.ts` e tem `id` para âncora do navbar. Fundo indicado entre parênteses. **A sequência de fundos abaixo é a do mockup e substitui qualquer regra genérica de alternância.**
 
-1. **Navbar** (branco, sticky) — logo ALDAK azul à esquerda; links de âncora ao centro; botão CTA "Inscreva-se" à direita. Mobile: menu hambúrguer. Ref: `inhire-page-1.png`.
-2. **Hero** `#hero` (textura azul) — o banner `hero/banner-1366x370.jpg` em largura total do container, `rounded-2xl`, proporção preservada; abaixo dele, centralizado, um botão CTA "Inscreva-se". Ref: `inhire-page-1.png`.
+1. **Navbar** (branco, sticky) — logo ALDAK azul à esquerda; links de âncora ao centro; os dois botões CTA (compactos) à direita. Layout completo só a partir de `xl` (1280); abaixo disso, menu hambúrguer com links + os dois botões empilhados. Ref: `inhire-page-1.png`.
+2. **Hero** `#hero` (textura azul) — o banner `hero/banner-1366x370.jpg` em largura total do container, `rounded-2xl`, proporção preservada; abaixo dele, centralizados, os dois botões CTA. Ref: `inhire-page-1.png`.
 3. **Propósito** `#proposito` (textura azul) — h1 branco centralizado; linha de 4 fotos quadradas `rounded-2xl` (profissionais com EPI); frase de apoio abaixo. Ref: `slide-proposito.png`. **As 4 fotos não foram entregues como arquivos separados** — deixar `<Image>` apontando para `public/proposito/pessoa-{1..4}.jpg` com `// TODO` e placeholder cinza até chegarem.
 4. **35 anos** `#quem-somos` (textura azul) — h2 branco em 3 linhas à esquerda, parágrafo, grid de 6 chips em 3 colunas (2 linhas). Ref: `slide-35-anos.png`.
 5. **Valores** `#valores` (papel claro) — h2 em `--blue-dark` em 2 linhas ("Nossos valores" / "Nossa cultura"); grid 2 colunas × 3 linhas, cada item = ícone lucide à esquerda + título h3 azul + texto. Ícones: Fome→`Rocket`, Verdade→`BadgeCheck`, Humildade Intelectual→`Lightbulb`, Comprometimento→`Flag` (ou `Mountain`), Resolutividade→`Puzzle`, Jogamos juntos→`Handshake`. Ref: `slide-valores.png`. Mobile: 1 coluna.
@@ -104,10 +104,10 @@ Cada seção é um componente em `src/components/sections/`, consome `src/conten
 8. **Etapas** `#etapas` (`--navy`, sem textura) — h2 branco centralizado; timeline vertical numerada (1–5) com linha conectora e círculos `--orange`, texto branco. Substitui a seção roxa do Inhire. Ref de posição: `inhire-page-3.png`.
 9. **Benefícios** `#beneficios` (papel claro) — h2 em `--blue-dark`; grid 2×2 de cards claros com ícone lucide + h3 + texto. Ícones: Auxílio Refeição→`CreditCard`, Auxílio Transporte→`Bus`, Totalpass→`Dumbbell`, Dayoff→`Cake`. Ref: `inhire-page-3.png`.
 10. **Depoimentos** `#depoimentos` (branco) — h2 em `--blue-dark` centralizado; 4 cards claros. Foto quadrada no topo (arquivo já vem com moldura, não adicionar outra borda), nome em `--orange` (medium), cargo em cinza, depoimento completo abaixo. Desktop: grid 2×2 (o texto é longo — não cortar, não usar "ler mais"). Mobile: 1 coluna. Ref: `inhire-page-3.png`.
-11. **CTA final** `#inscreva-se` (`--orange`) — h2 branco "Inscrições até 25/10" + botão branco "Inscreva-se".
+11. **CTA final** `#inscreva-se` (`--orange`) — h2 branco "Inscrições até 25/10" + os dois botões brancos com texto laranja.
 12. **Footer** (`--navy`) — logo ALDAK branco + logo do programa branco, texto "Programa de Estágio Aldak 2027".
 
-Mobile-first; breakpoints `md` (768) e `lg` (1024). Container `max-w-6xl`. Espaçamento vertical de seção: `py-16 md:py-24`.
+Mobile-first; breakpoints `md` (768), `lg` (1024) e `xl` (1280, só o navbar). Container `max-w-6xl`. Espaçamento vertical de seção: `py-16 md:py-24`.
 
 ## Arquitetura de conteúdo
 
@@ -123,7 +123,6 @@ Mobile-first; breakpoints `md` (768) e `lg` (1024). Container `max-w-6xl`. Espa�
 
 ## Pendências conhecidas (`// TODO` no código)
 
-- `INSCRICAO_URL` — ainda não definida.
 - Textura de papel claro (seções 5–7, 9) — arquivo não entregue.
 - 4 fotos individuais da seção "Propósito" — não entregues (só existem dentro do slide 960×540).
 - Data "25/10" está gravada no banner do hero; se mudar, o banner precisa ser refeito pelo design.
