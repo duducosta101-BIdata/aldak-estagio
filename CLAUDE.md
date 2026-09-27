@@ -96,7 +96,7 @@ Cada seção é um componente em `src/components/sections/`, consome `src/conten
 
 1. **Navbar** (branco, sticky) — logo ALDAK azul à esquerda; links de âncora ao centro; os dois botões CTA (compactos) à direita. Layout completo só a partir de `xl` (1280); abaixo disso, menu hambúrguer com links + os dois botões empilhados. Ref: `inhire-page-1.png`.
 2. **Hero** `#hero` (textura azul) — o banner `hero/banner-1366x370.jpg` em largura total do container, `rounded-2xl`, proporção preservada; abaixo dele, centralizados, os dois botões CTA. Ref: `inhire-page-1.png`.
-3. **Propósito** `#proposito` (textura azul) — h1 branco centralizado; linha de 4 fotos quadradas `rounded-2xl` (profissionais com EPI); frase de apoio abaixo. Ref: `slide-proposito.png`. **As 4 fotos não foram entregues como arquivos separados** — deixar `<Image>` apontando para `public/proposito/pessoa-{1..4}.jpg` com `// TODO` e placeholder cinza até chegarem.
+3. **Propósito** `#proposito` (textura azul) — h1 branco centralizado; linha de 4 fotos quadradas `rounded-2xl` (profissionais com EPI); frase de apoio abaixo. Ref: `slide-proposito.png`. Fotos em `public/proposito/pessoa-{1..4}.webp` (recortes com fundo branco, ~800×800, na ordem do slide). Cada uma vai dentro de um card branco `rounded-2xl` quadrado com `object-cover object-top`.
 4. **35 anos** `#quem-somos` (textura azul) — h2 branco em 3 linhas à esquerda, parágrafo, grid de 6 chips em 3 colunas (2 linhas). Ref: `slide-35-anos.png`.
 5. **Valores** `#valores` (papel claro) — h2 em `--blue-dark` em 2 linhas ("Nossos valores" / "Nossa cultura"); grid 2 colunas × 3 linhas, cada item = ícone lucide à esquerda + título h3 azul + texto. Ícones: Fome→`Rocket`, Verdade→`BadgeCheck`, Humildade Intelectual→`Lightbulb`, Comprometimento→`Flag` (ou `Mountain`), Resolutividade→`Puzzle`, Jogamos juntos→`Handshake`. Ref: `slide-valores.png`. Mobile: 1 coluna.
 6. **O estágio** `#o-estagio` (papel claro) — tagline em `--blue-dark` centralizada, h2 centralizado, 3 cards laranja lado a lado. Ref: `inhire-page-2.png`. Mobile: empilhados.
@@ -124,5 +124,4 @@ Mobile-first; breakpoints `md` (768), `lg` (1024) e `xl` (1280, só o navbar). C
 ## Pendências conhecidas (`// TODO` no código)
 
 - Textura de papel claro (seções 5–7, 9) — arquivo não entregue.
-- 4 fotos individuais da seção "Propósito" — não entregues (só existem dentro do slide 960×540).
 - Data "25/10" está gravada no banner do hero; se mudar, o banner precisa ser refeito pelo design.

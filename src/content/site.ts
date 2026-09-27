@@ -80,12 +80,12 @@ export const site = {
 
   proposito: {
     h1: "Ajudar a proteger vidas",
-    // TODO: 4 fotos individuais não entregues (existem só dentro do slide 960×540).
+    // Ordem igual à do slide-proposito.png (esquerda → direita).
     fotos: [
-      "/proposito/pessoa-1.jpg",
-      "/proposito/pessoa-2.jpg",
-      "/proposito/pessoa-3.jpg",
-      "/proposito/pessoa-4.jpg",
+      { src: "/proposito/pessoa-1.webp", alt: "Profissional com capacete amarelo e rádio comunicador" },
+      { src: "/proposito/pessoa-2.webp", alt: "Profissional com capacete branco, rádio comunicador e notebook" },
+      { src: "/proposito/pessoa-3.webp", alt: "Profissional com colete refletivo segurando capacete azul" },
+      { src: "/proposito/pessoa-4.webp", alt: "Profissional com capacete laranja e tablet" },
     ],
     texto: "Esse é nosso propósito, ontem, hoje e sempre.",
   },
