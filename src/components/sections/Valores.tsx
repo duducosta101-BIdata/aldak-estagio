@@ -1,4 +1,4 @@
-import Icon from "@/components/Icon";
+import Image from "next/image";
 import { site } from "@/content/site";
 
 export default function Valores() {
@@ -17,10 +17,13 @@ export default function Valores() {
         <ul className="mt-12 grid gap-10 md:grid-cols-2 md:gap-x-14 md:gap-y-12">
           {valores.itens.map((item) => (
             <li key={item.title} className="flex items-start gap-5">
-              <Icon
-                name={item.icon}
-                className="h-12 w-12 shrink-0 text-blue-dark md:h-14 md:w-14"
-                strokeWidth={1.5}
+              {/* Ícone oficial da empresa (public/valores), já na cor --blue-dark. */}
+              <Image
+                src={item.image}
+                alt=""
+                width={56}
+                height={56}
+                className="h-12 w-12 shrink-0 object-contain md:h-14 md:w-14"
               />
               <div>
                 <h3 className="text-xl text-blue-dark md:text-2xl">{item.title}</h3>

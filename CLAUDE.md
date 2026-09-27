@@ -9,7 +9,7 @@ One-page estática de recrutamento para o Programa de Estágio ALDAK 2027. Deplo
 
 - Next.js (App Router) + TypeScript + Tailwind CSS
 - Sem backend, sem banco de dados. Página 100% estática.
-- Ícones: lucide-react (estilo linha/outline, stroke 1.5–2)
+- Ícones: lucide-react (estilo linha/outline, stroke 1.5–2) na seção Benefícios. Na seção Valores os ícones são imagens oficiais da empresa em `public/valores/` (PNG/WebP azul `#273D92` sobre fundo branco), não lucide.
 - Imagens via `next/image` (assets em `public/`)
 
 ## Regras invioláveis
@@ -98,7 +98,7 @@ Cada seção é um componente em `src/components/sections/`, consome `src/conten
 2. **Hero** `#hero` (textura azul) — o banner `hero/banner-1366x370.jpg` em largura total do container, `rounded-2xl`, proporção preservada; abaixo dele, centralizados, os dois botões CTA. Ref: `inhire-page-1.png`.
 3. **Propósito** `#proposito` (textura azul) — h1 branco centralizado; linha de 4 fotos quadradas `rounded-2xl` (profissionais com EPI); frase de apoio abaixo. Ref: `slide-proposito.png`. Fotos em `public/proposito/pessoa-{1..4}.webp` (recortes com fundo branco, ~800×800, na ordem do slide). Cada uma vai dentro de um card branco `rounded-2xl` quadrado com `object-cover object-top`.
 4. **35 anos** `#quem-somos` (textura azul) — h2 branco em 3 linhas à esquerda, parágrafo, grid de 6 chips em 3 colunas (2 linhas). Ref: `slide-35-anos.png`.
-5. **Valores** `#valores` (papel claro) — h2 em `--blue-dark` em 2 linhas ("Nossos valores" / "Nossa cultura"); grid 2 colunas × 3 linhas, cada item = ícone lucide à esquerda + título h3 azul + texto. Ícones: Fome→`Rocket`, Verdade→`BadgeCheck`, Humildade Intelectual→`Lightbulb`, Comprometimento→`Flag` (ou `Mountain`), Resolutividade→`Puzzle`, Jogamos juntos→`Handshake`. Ref: `slide-valores.png`. Mobile: 1 coluna.
+5. **Valores** `#valores` (papel claro) — h2 em `--blue-dark` em 2 linhas ("Nossos valores" / "Nossa cultura"); grid 2 colunas × 3 linhas, cada item = ícone oficial à esquerda (`<Image>` 56×56, `object-contain`) + título h3 azul + texto. Ícones em `public/valores/`: Fome→`fome.png` (foguete), Verdade→`verdade.png` (selo com check), Humildade Intelectual→`humildade-intelectual.png` (cérebro-lâmpada), Comprometimento→`comprometimento.png` (montanha com bandeira), Resolutividade→`resolutividade.png` (quebra-cabeça), Jogamos juntos→`jogamos-juntos.webp` (mãos unidas). Ref: `slide-valores.png`. Mobile: 1 coluna.
 6. **O estágio** `#o-estagio` (papel claro) — tagline em `--blue-dark` centralizada, h2 centralizado, 3 cards laranja lado a lado. Ref: `inhire-page-2.png`. Mobile: empilhados.
 7. **Oportunidades** `#oportunidades` (papel claro) — h2 à esquerda em 2 linhas; grid 2×2 de cards claros; abaixo, bloco "Requisitos" com fundo `--gray-bg`, `rounded-2xl`, título h3 em `--blue-dark`, bullets em 2 colunas com texto azul. Ref: `slide-oportunidades.png`.
 8. **Etapas** `#etapas` (`--navy`, sem textura) — h2 branco centralizado; timeline vertical numerada (1–5) com linha conectora e círculos `--orange`, texto branco. Substitui a seção roxa do Inhire. Ref de posição: `inhire-page-3.png`.
@@ -113,7 +113,7 @@ Mobile-first; breakpoints `md` (768), `lg` (1024) e `xl` (1280, só o navbar). C
 
 - **Todo o copy em `src/content/site.ts`** como objeto tipado, espelhando as seções acima (`nav`, `hero`, `proposito`, `quemSomos`, `valores`, `oEstagio`, `oportunidades`, `requisitos`, `etapas`, `beneficios`, `depoimentos`, `ctaFinal`, `footer`).
 - Componentes não contêm texto hardcoded — só consomem o objeto.
-- Ícones referenciados por nome no objeto (`icon: "Rocket"`) e resolvidos por um mapa em `src/components/Icon.tsx`.
+- Ícones lucide (Benefícios) referenciados por nome no objeto (`icon: "Bus"`) e resolvidos por um mapa em `src/components/Icon.tsx`. Ícones de imagem (Valores) referenciados por caminho (`image: "/valores/fome.png"`).
 
 ## Comandos
 

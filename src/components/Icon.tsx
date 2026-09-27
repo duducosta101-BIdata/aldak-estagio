@@ -1,25 +1,7 @@
-import {
-  BadgeCheck,
-  Bus,
-  Cake,
-  CreditCard,
-  Dumbbell,
-  Flag,
-  Handshake,
-  Lightbulb,
-  Puzzle,
-  Rocket,
-  type LucideProps,
-} from "lucide-react";
+import { Bus, Cake, CreditCard, Dumbbell, type LucideProps } from "lucide-react";
 import type { IconName } from "@/content/site";
 
 const ICONS: Record<IconName, React.ComponentType<LucideProps>> = {
-  Rocket,
-  BadgeCheck,
-  Lightbulb,
-  Flag,
-  Puzzle,
-  Handshake,
   CreditCard,
   Dumbbell,
   Bus,

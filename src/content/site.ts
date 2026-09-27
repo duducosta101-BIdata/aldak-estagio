@@ -16,17 +16,7 @@ export const INSCRICOES = [
 
 export type Inscricao = (typeof INSCRICOES)[number];
 
-export type IconName =
-  | "Rocket"
-  | "BadgeCheck"
-  | "Lightbulb"
-  | "Flag"
-  | "Puzzle"
-  | "Handshake"
-  | "CreditCard"
-  | "Dumbbell"
-  | "Bus"
-  | "Cake";
+export type IconName = "CreditCard" | "Dumbbell" | "Bus" | "Cake";
 
 export interface NavLink {
   label: string;
@@ -36,6 +26,13 @@ export interface NavLink {
 export interface IconItem {
   title: string;
   icon: IconName;
+  text: string;
+}
+
+/** Item com ícone oficial da empresa (imagem em public/valores). */
+export interface ImageItem {
+  title: string;
+  image: string;
   text: string;
 }
 
@@ -109,35 +106,35 @@ export const site = {
     itens: [
       {
         title: "Fome",
-        icon: "Rocket",
+        image: "/valores/fome.png",
         text: "Somos famintos e incansáveis na busca por nossos objetivos e resultados. Não permitimos que nossas conquistas ou desafios nos paralisem, pois sempre há algo novo a ser alcançado.",
       },
       {
         title: "Verdade",
-        icon: "BadgeCheck",
+        image: "/valores/verdade.png",
         text: "Acreditamos que a base de qualquer relacionamento é a transparência, a confiança e a gentileza. Por isso, não toleramos mentiras.",
       },
       {
         title: "Humildade Intelectual",
-        icon: "Lightbulb",
+        image: "/valores/humildade-intelectual.png",
         text: "Acreditamos que há algo a aprender todos os dias e com todas as pessoas. Estamos sempre abertos a pensamentos diversos e dispostos a mudar de opinião.",
       },
       {
         title: "Comprometimento",
-        icon: "Flag",
+        image: "/valores/comprometimento.png",
         text: "Não desistimos. Trabalhamos com determinação e consistência para honrar nossos compromissos.",
       },
       {
         title: "Resolutividade",
-        icon: "Puzzle",
+        image: "/valores/resolutividade.png",
         text: "Fazemos o que precisa ser feito de forma eficiente e eficaz. Encaramos nossos erros e problemas como oportunidades de melhoria e crescimento.",
       },
       {
         title: "Jogamos juntos",
-        icon: "Handshake",
+        image: "/valores/jogamos-juntos.webp",
         text: "Colaboramos uns com os outros, compartilhamos o sucesso e nos apoiamos no dia a dia.",
       },
-    ] satisfies IconItem[],
+    ] satisfies ImageItem[],
   },
 
   oEstagio: {
